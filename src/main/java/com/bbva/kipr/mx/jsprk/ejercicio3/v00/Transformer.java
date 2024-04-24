@@ -21,9 +21,9 @@ public class Transformer implements Transform {
 
         Dataset<Row> data_p = spark.read().csv("local-execution/files/V_HUELLA.csv");
         Dataset<Row> data_s= spark.read().csv("local-execution/files/V_HUELLA_2.csv");
-        Dataset<Row> ds_data_p = data_p.alias("A").join(data_s.alias("B"), data_p.col("input_01").equalTo(data_s.col("input_03")), "inner");
+        Dataset<Row> ds_data_p = data_p.alias("Data1").join(data_s.alias("Data2"), data_p.col("input_01").equalTo(data_s.col("input_03")), "inner");
         Dataset<Row> ds_drop = ds_data_p.drop("DNI");
-        Dataset<Row> dataSet3 = ds_drop.select("A.N_folio","B.code_1","A.input_1","A.input_2","B.input_3","B.input_4");
+        Dataset<Row> dataSet3 = ds_drop.select("Data1.N_folio","Data2.code_1","Data1.input_1","Data1.input_2","Data2.input_3","Data2.input_4");
 
         dataSet3.show();
 

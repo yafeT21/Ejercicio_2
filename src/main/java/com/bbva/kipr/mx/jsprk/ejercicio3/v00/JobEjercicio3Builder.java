@@ -16,10 +16,10 @@ public class JobEjercicio3Builder extends RegisterSparkBuilder {
         //EXAMPLE WITH A LOCAL SOURCE FILE
         return SourcesList.builder()
                 .add(Source.File.Csv.builder()
-                        .alias("sourceAlias1")
+                        .alias("sourceAlias")
                         .physicalName("input1.csv")
                         .serviceName("local.logicalDataStore.batch")
-                        .sql("SELECT * FROM sourceAlias1")
+                        .sql("SELECT * FROM sourceAlias")
                         .header(true)
                         .delimiter(",")
                         .build())
